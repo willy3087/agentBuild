@@ -1,0 +1,451 @@
+{
+  "errors": {
+    "invalidToken": "Invalid or Missing token",
+    "tokenExpired": "Token Expired",
+    "refreshTokenExpired": "Refresh Token Expired",
+    "forbidden": "Forbidden",
+    "unknownUser": "Unknown Username or Password",
+    "incorrectPassword": "Incorrect Password",
+    "inactiveUser": "Inactive User",
+    "invalidWorkspace": "No Workspace Assigned",
+    "unknownError": "Unknown Error",
+    "boundary": {
+      "title": "Oh snap!",
+      "subtitle": "The following error occurred when loading this page.",
+      "status": "Status: {{status}}",
+      "message": "Please retry after some time. If the issue persists, reach out to us on our Discord server.\nAlternatively, you can raise an issue on Github."
+    }
+  },
+  "menu": {
+    "primary": {
+      "chatflows": "Chatflows",
+      "agentflows": "Agentflows",
+      "executions": "Executions",
+      "assistants": "Assistants",
+      "marketplaces": "Marketplaces",
+      "tools": "Tools",
+      "credentials": "Credentials",
+      "variables": "Variables",
+      "apiKeys": "API Keys",
+      "documentStores": "Document Stores"
+    },
+    "evaluations": {
+      "title": "Evaluations",
+      "datasets": "Datasets",
+      "evaluators": "Evaluators",
+      "evaluations": "Evaluations"
+    },
+    "management": {
+      "title": "User & Workspace Management",
+      "ssoConfig": "SSO Config",
+      "roles": "Roles",
+      "users": "Users",
+      "workspaces": "Workspaces",
+      "loginActivity": "Login Activity"
+    },
+    "others": {
+      "title": "Others",
+      "logs": "Logs",
+      "accountSettings": "Account Settings"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign In",
+      "fields": {
+        "username": {
+          "label": "Username",
+          "placeholder": "user@company.com"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "********"
+        }
+      },
+      "buttons": {
+        "login": "Login",
+        "resendVerification": "Resend Verification Email",
+        "sso": {
+          "microsoft": "Sign In With Microsoft",
+          "google": "Sign In With Google",
+          "auth0": "Sign In With Auth0 by Okta",
+          "github": "Sign In With Github"
+        }
+      },
+      "links": {
+        "noAccount": "Don't have an account?",
+        "signUpFree": "Sign up for free",
+        "haveInvite": "Have an invite code?",
+        "signUpAccount": "Sign up for an account",
+        "forgotPassword": "Forgot password?"
+      },
+      "divider": {
+        "or": "OR"
+      },
+      "messages": {
+        "verificationEmailSent": "Verification email has been sent successfully.",
+        "verificationEmailFailed": "Failed to send verification email."
+      }
+    },
+    "register": {
+      "title": "Sign Up",
+      "fields": {
+        "username": {
+          "label": "Username",
+          "placeholder": "John Doe"
+        },
+        "fullName": {
+          "label": "Full Name",
+          "placeholder": "Display Name",
+          "hint": "Is used for display purposes only."
+        },
+        "email": {
+          "label": "EMail",
+          "placeholder": "user@company.com",
+          "hint": "Kindly use a valid email address. Will be used as login id."
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "********",
+          "hint": "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character."
+        },
+        "confirmPassword": {
+          "label": "Confirm Password",
+          "placeholder": "********",
+          "hint": "Confirm your password. Must match the password typed above."
+        },
+        "inviteCode": {
+          "label": "Invite Code",
+          "placeholder": "Paste in the invite code.",
+          "hint": "Please copy the token you would have received in your email."
+        }
+      },
+      "buttons": {
+        "createAccount": "Create Account",
+        "sso": {
+          "microsoft": "Sign In With Microsoft",
+          "google": "Sign In With Google",
+          "auth0": "Sign In With Auth0 by Okta",
+          "github": "Sign In With Github"
+        }
+      },
+      "links": {
+        "haveAccount": "Already have an account?",
+        "signIn": "Sign In"
+      },
+      "divider": {
+        "or": "OR"
+      },
+      "messages": {
+        "successEnterprise": "Registration Successful. You will be redirected to the sign in page shortly.",
+        "successCloud": "To complete your registration, please click on the verification link we sent to your email address"
+      }
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "fields": {
+        "email": {
+          "label": "Email",
+          "placeholder": "user@company.com"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "********"
+        },
+        "newPassword": {
+          "label": "New Password",
+          "hint": "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character."
+        },
+        "confirmPassword": {
+          "label": "Confirm Password",
+          "placeholder": "********",
+          "hint": "Confirm your new password. Must match the password typed above."
+        },
+        "resetToken": {
+          "label": "Reset Token",
+          "placeholder": "Paste in the reset token.",
+          "hint": "Please copy the token you received in your email."
+        }
+      },
+      "buttons": {
+        "updatePassword": "Update Password"
+      },
+      "links": {
+        "backToLogin": "Back to Login"
+      },
+      "validation": {
+        "tokenRequired": "Token cannot be left blank!",
+        "passwordMismatch": "New Password and Confirm Password do not match."
+      },
+      "messages": {
+        "success": "Password reset successful",
+        "failed": "Failed to reset password!"
+      }
+    },
+    "setupAccount": {
+      "title": "Setup Account",
+      "fields": {
+        "organization": {
+          "label": "Organization",
+          "placeholder": "Acme"
+        },
+        "orgName": {
+          "label": "Organization Name:",
+          "placeholder": "Organization Name"
+        },
+        "username": {
+          "label": "Username",
+          "placeholder": "John Doe"
+        },
+        "existingUsername": {
+          "label": "Existing Username",
+          "placeholder": "Existing Username",
+          "hint": "Existing username that was set as FLOWISE_USERNAME environment variable"
+        },
+        "existingPassword": {
+          "label": "Existing Password",
+          "placeholder": "Existing Password",
+          "hint": "Existing password that was set as FLOWISE_PASSWORD environment variable"
+        },
+        "adminName": {
+          "label": "Administrator Name",
+          "placeholder": "Display Name",
+          "hint": "Is used for display purposes only."
+        },
+        "adminEmail": {
+          "label": "Administrator Email",
+          "hint": "Kindly use a valid email address. Will be used as login id."
+        },
+        "email": {
+          "label": "EMail",
+          "placeholder": "user@company.com"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "********",
+          "hint": "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character."
+        },
+        "confirmPassword": {
+          "label": "Confirm Password",
+          "placeholder": "********",
+          "hint": "Reconfirm your password. Must match the password typed above."
+        }
+      },
+      "buttons": {
+        "signUp": "Sign Up",
+        "sso": {
+          "microsoft": "Sign Up With Microsoft",
+          "google": "Sign Up With Google",
+          "auth0": "Sign Up With Auth0 by Okta"
+        }
+      },
+      "alerts": {
+        "requiresAuth": "Application authentication now requires email and password. Contact administrator to setup an account."
+      },
+      "info": {
+        "localHost": "Account setup does not make any external connections, your data stays securely on your locally hosted server."
+      },
+      "dividers": {
+        "newAccountDetails": "New Account Details",
+        "accountAdministrator": "Account Administrator"
+      },
+      "divider": {
+        "or": "OR"
+      }
+    }
+  },
+  "workspace": {
+    "list": {
+      "title": "Workspaces",
+      "status": {
+        "active": "Active"
+      },
+      "actions": {
+        "edit": "Edit",
+        "workspaceUsers": "Workspace Users",
+        "delete": "Delete",
+        "addNew": "Add New"
+      },
+      "search": {
+        "placeholder": "Search Workspaces"
+      },
+      "table": {
+        "name": "Name",
+        "description": "Description",
+        "users": "Users",
+        "lastUpdated": "Last Updated"
+      },
+      "drawer": {
+        "users": {
+          "title": "Users",
+          "table": {
+            "user": "User",
+            "role": "Role"
+          },
+          "roles": {
+            "orgOwner": "ORGANIZATION OWNER",
+            "personalWorkspace": "PERSONAL WORKSPACE"
+          }
+        }
+      },
+      "empty": {
+        "noWorkspaces": "No Workspaces Yet"
+      },
+      "loading": {
+        "switching": "Switching workspace...",
+        "deleting": "Deleting workspace..."
+      }
+    },
+    "users": {
+      "title": "{{workspaceName}}: Workspace Users",
+      "description": "Manage workspace users and permissions.",
+      "search": {
+        "placeholder": "Search Users"
+      },
+      "actions": {
+        "removeUsers": "Remove Users",
+        "addUser": "Add User"
+      },
+      "table": {
+        "selectAll": "select all",
+        "emailName": "Email/Name",
+        "role": "Role",
+        "status": "Status",
+        "lastLogin": "Last Login",
+        "lastLogin": {
+          "never": "Never"
+        },
+        "roles": {
+          "orgOwner": "ORGANIZATION OWNER"
+        },
+        "actions": {
+          "edit": "Edit",
+          "changeRole": "Change Role"
+        }
+      },
+      "empty": {
+        "noUsers": "No Assigned Users Yet",
+        "addUser": "Add User"
+      },
+      "dialog": {
+        "invite": {
+          "buttons": {
+            "cancel": "Cancel",
+            "confirm": "Send Invite"
+          }
+        },
+        "updateInvite": {
+          "buttons": {
+            "cancel": "Cancel",
+            "confirm": "Update Invite"
+          }
+        },
+        "updateRole": {
+          "buttons": {
+            "cancel": "Cancel",
+            "confirm": "Update Role"
+          }
+        },
+        "remove": {
+          "title": "Remove Users",
+          "description": "Remove the following users from the workspace?\n{{userList}}",
+          "buttons": {
+            "confirm": "Remove",
+            "cancel": "Cancel"
+          }
+        },
+        "editRole": {
+          "title": "Change Workspace Role - {{userEmail}} {{userName}}",
+          "fields": {
+            "role": {
+              "label": "New Role to Assign",
+              "placeholder": "Select Role"
+            }
+          },
+          "notifications": {
+            "updated": "WorkspaceUser Details Updated",
+            "updateFailed": "Failed to update WorkspaceUser: {{error}}"
+          }
+        }
+      },
+      "notifications": {
+        "cannotRemoveOwner": "Organization owner cannot be removed from workspace.",
+        "removed": "{{count}} User(s) removed from workspace.",
+        "unlinkFailed": "Failed to unlink users: {{error}}"
+      }
+    },
+    "dialog": {
+      "addEdit": {
+        "title": {
+          "add": "Add Workspace",
+          "edit": "Edit Workspace"
+        },
+        "fields": {
+          "name": {
+            "label": "Name"
+          },
+          "description": {
+            "label": "Description"
+          }
+        },
+        "buttons": {
+          "cancel": "Cancel",
+          "confirm": {
+            "add": "Add",
+            "edit": "Save"
+          }
+        },
+        "validation": {
+          "reservedName": "Workspace name cannot be Default Workspace or Personal Workspace - this is a reserved name"
+        },
+        "notifications": {
+          "added": "New Workspace added",
+          "addFailed": "Failed to add new Workspace: {{error}}",
+          "saved": "Workspace saved",
+          "saveFailed": "Failed to save Workspace: {{error}}"
+        }
+      },
+      "delete": {
+        "title": "Delete Workspace {{workspaceName}}",
+        "description": "This is irreversible and will remove all associated data inside the workspace. Are you sure you want to delete?",
+        "buttons": {
+          "confirm": "Delete",
+          "cancel": "Cancel"
+        }
+      }
+    },
+    "notifications": {
+      "deleted": "Workspace deleted",
+      "deleteFailed": "Failed to delete workspace: {{error}}"
+    }
+  },
+  "header": {
+    "github": {
+      "star": "Star"
+    },
+    "logout": {
+      "loggingOut": "Logging out..."
+    },
+    "upgrade": {
+      "button": "Upgrade"
+    }
+  },
+  "common": {
+    "buttons": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "add": "Add",
+      "close": "Close",
+      "back": "Back"
+    },
+    "search": {
+      "placeholder": "Search"
+    }
+  }
+}
+

@@ -1,0 +1,451 @@
+{
+  "errors": {
+    "invalidToken": "Token inválido ou ausente",
+    "tokenExpired": "Token expirado",
+    "refreshTokenExpired": "Token de atualização expirado",
+    "forbidden": "Acesso negado",
+    "unknownUser": "Nome de usuário ou senha desconhecidos",
+    "incorrectPassword": "Senha incorreta",
+    "inactiveUser": "Usuário inativo",
+    "invalidWorkspace": "Nenhum Workspace atribuído",
+    "unknownError": "Erro desconhecido",
+    "boundary": {
+      "title": "Ops!",
+      "subtitle": "O seguinte erro ocorreu ao carregar esta página.",
+      "status": "Status: {{status}}",
+      "message": "Por favor, tente novamente após alguns instantes. Se o problema persistir, entre em contato conosco em nosso servidor Discord.\nAlternativamente, você pode abrir uma issue no Github."
+    }
+  },
+  "menu": {
+    "primary": {
+      "chatflows": "Chatflows",
+      "agentflows": "Agentflows",
+      "executions": "Execuções",
+      "assistants": "Assistentes",
+      "marketplaces": "Marketplaces",
+      "tools": "Ferramentas",
+      "credentials": "Credenciais",
+      "variables": "Variáveis",
+      "apiKeys": "Chaves API",
+      "documentStores": "Document Stores"
+    },
+    "evaluations": {
+      "title": "Avaliações",
+      "datasets": "Datasets",
+      "evaluators": "Avaliadores",
+      "evaluations": "Avaliações"
+    },
+    "management": {
+      "title": "Gerenciamento de Usuários e Workspaces",
+      "ssoConfig": "Configuração SSO",
+      "roles": "Funções",
+      "users": "Usuários",
+      "workspaces": "Workspaces",
+      "loginActivity": "Atividade de Login"
+    },
+    "others": {
+      "title": "Outros",
+      "logs": "Logs",
+      "accountSettings": "Configurações da Conta"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Entrar",
+      "fields": {
+        "username": {
+          "label": "Nome de usuário",
+          "placeholder": "usuario@empresa.com"
+        },
+        "email": {
+          "label": "E-mail"
+        },
+        "password": {
+          "label": "Senha",
+          "placeholder": "********"
+        }
+      },
+      "buttons": {
+        "login": "Entrar",
+        "resendVerification": "Reenviar E-mail de Verificação",
+        "sso": {
+          "microsoft": "Entrar com Microsoft",
+          "google": "Entrar com Google",
+          "auth0": "Entrar com Auth0 por Okta",
+          "github": "Entrar com Github"
+        }
+      },
+      "links": {
+        "noAccount": "Não tem uma conta?",
+        "signUpFree": "Cadastre-se gratuitamente",
+        "haveInvite": "Tem um código de convite?",
+        "signUpAccount": "Cadastre-se para uma conta",
+        "forgotPassword": "Esqueceu a senha?"
+      },
+      "divider": {
+        "or": "OU"
+      },
+      "messages": {
+        "verificationEmailSent": "E-mail de verificação enviado com sucesso.",
+        "verificationEmailFailed": "Falha ao enviar e-mail de verificação."
+      }
+    },
+    "register": {
+      "title": "Cadastrar",
+      "fields": {
+        "username": {
+          "label": "Nome de usuário",
+          "placeholder": "João Silva"
+        },
+        "fullName": {
+          "label": "Nome Completo",
+          "placeholder": "Nome de Exibição",
+          "hint": "Usado apenas para fins de exibição."
+        },
+        "email": {
+          "label": "E-mail",
+          "placeholder": "usuario@empresa.com",
+          "hint": "Por favor, use um endereço de e-mail válido. Será usado como ID de login."
+        },
+        "password": {
+          "label": "Senha",
+          "placeholder": "********",
+          "hint": "A senha deve ter pelo menos 8 caracteres e conter pelo menos uma letra minúscula, uma letra maiúscula, um dígito e um caractere especial."
+        },
+        "confirmPassword": {
+          "label": "Confirmar Senha",
+          "placeholder": "********",
+          "hint": "Confirme sua senha. Deve corresponder à senha digitada acima."
+        },
+        "inviteCode": {
+          "label": "Código de Convite",
+          "placeholder": "Cole o código de convite.",
+          "hint": "Por favor, copie o token que você recebeu em seu e-mail."
+        }
+      },
+      "buttons": {
+        "createAccount": "Criar Conta",
+        "sso": {
+          "microsoft": "Entrar com Microsoft",
+          "google": "Entrar com Google",
+          "auth0": "Entrar com Auth0 por Okta",
+          "github": "Entrar com Github"
+        }
+      },
+      "links": {
+        "haveAccount": "Já tem uma conta?",
+        "signIn": "Entrar"
+      },
+      "divider": {
+        "or": "OU"
+      },
+      "messages": {
+        "successEnterprise": "Cadastro realizado com sucesso. Você será redirecionado para a página de login em breve.",
+        "successCloud": "Para completar seu cadastro, clique no link de verificação que enviamos para seu endereço de e-mail"
+      }
+    },
+    "resetPassword": {
+      "title": "Redefinir Senha",
+      "fields": {
+        "email": {
+          "label": "E-mail",
+          "placeholder": "usuario@empresa.com"
+        },
+        "password": {
+          "label": "Senha",
+          "placeholder": "********"
+        },
+        "newPassword": {
+          "label": "Nova Senha",
+          "hint": "A senha deve ter pelo menos 8 caracteres e conter pelo menos uma letra minúscula, uma letra maiúscula, um dígito e um caractere especial."
+        },
+        "confirmPassword": {
+          "label": "Confirmar Senha",
+          "placeholder": "********",
+          "hint": "Confirme sua nova senha. Deve corresponder à senha digitada acima."
+        },
+        "resetToken": {
+          "label": "Token de Redefinição",
+          "placeholder": "Cole o token de redefinição.",
+          "hint": "Por favor, copie o token que você recebeu em seu e-mail."
+        }
+      },
+      "buttons": {
+        "updatePassword": "Atualizar Senha"
+      },
+      "links": {
+        "backToLogin": "Voltar para Login"
+      },
+      "validation": {
+        "tokenRequired": "O token não pode ficar em branco!",
+        "passwordMismatch": "Nova Senha e Confirmar Senha não correspondem."
+      },
+      "messages": {
+        "success": "Senha redefinida com sucesso",
+        "failed": "Falha ao redefinir senha!"
+      }
+    },
+    "setupAccount": {
+      "title": "Configurar Conta",
+      "fields": {
+        "organization": {
+          "label": "Organização",
+          "placeholder": "Acme"
+        },
+        "orgName": {
+          "label": "Nome da Organização:",
+          "placeholder": "Nome da Organização"
+        },
+        "username": {
+          "label": "Nome de usuário",
+          "placeholder": "João Silva"
+        },
+        "existingUsername": {
+          "label": "Nome de Usuário Existente",
+          "placeholder": "Nome de Usuário Existente",
+          "hint": "Nome de usuário existente que foi definido como variável de ambiente FLOWISE_USERNAME"
+        },
+        "existingPassword": {
+          "label": "Senha Existente",
+          "placeholder": "Senha Existente",
+          "hint": "Senha existente que foi definida como variável de ambiente FLOWISE_PASSWORD"
+        },
+        "adminName": {
+          "label": "Nome do Administrador",
+          "placeholder": "Nome de Exibição",
+          "hint": "Usado apenas para fins de exibição."
+        },
+        "adminEmail": {
+          "label": "E-mail do Administrador",
+          "hint": "Por favor, use um endereço de e-mail válido. Será usado como ID de login."
+        },
+        "email": {
+          "label": "E-mail",
+          "placeholder": "usuario@empresa.com"
+        },
+        "password": {
+          "label": "Senha",
+          "placeholder": "********",
+          "hint": "A senha deve ter pelo menos 8 caracteres e conter pelo menos uma letra minúscula, uma letra maiúscula, um dígito e um caractere especial."
+        },
+        "confirmPassword": {
+          "label": "Confirmar Senha",
+          "placeholder": "********",
+          "hint": "Reconfirme sua senha. Deve corresponder à senha digitada acima."
+        }
+      },
+      "buttons": {
+        "signUp": "Cadastrar",
+        "sso": {
+          "microsoft": "Cadastrar com Microsoft",
+          "google": "Cadastrar com Google",
+          "auth0": "Cadastrar com Auth0 por Okta"
+        }
+      },
+      "alerts": {
+        "requiresAuth": "A autenticação da aplicação agora requer e-mail e senha. Entre em contato com o administrador para configurar uma conta."
+      },
+      "info": {
+        "localHost": "A configuração da conta não faz conexões externas, seus dados permanecem seguros em seu servidor hospedado localmente."
+      },
+      "dividers": {
+        "newAccountDetails": "Detalhes da Nova Conta",
+        "accountAdministrator": "Administrador da Conta"
+      },
+      "divider": {
+        "or": "OU"
+      }
+    }
+  },
+  "workspace": {
+    "list": {
+      "title": "Workspaces",
+      "status": {
+        "active": "Ativo"
+      },
+      "actions": {
+        "edit": "Editar",
+        "workspaceUsers": "Usuários do Workspace",
+        "delete": "Excluir",
+        "addNew": "Adicionar Novo"
+      },
+      "search": {
+        "placeholder": "Buscar Workspaces"
+      },
+      "table": {
+        "name": "Nome",
+        "description": "Descrição",
+        "users": "Usuários",
+        "lastUpdated": "Última Atualização"
+      },
+      "drawer": {
+        "users": {
+          "title": "Usuários",
+          "table": {
+            "user": "Usuário",
+            "role": "Função"
+          },
+          "roles": {
+            "orgOwner": "PROPRIETÁRIO DA ORGANIZAÇÃO",
+            "personalWorkspace": "WORKSPACE PESSOAL"
+          }
+        }
+      },
+      "empty": {
+        "noWorkspaces": "Ainda Não Há Workspaces"
+      },
+      "loading": {
+        "switching": "Trocando workspace...",
+        "deleting": "Excluindo workspace..."
+      }
+    },
+    "users": {
+      "title": "{{workspaceName}}: Usuários do Workspace",
+      "description": "Gerenciar usuários e permissões do workspace.",
+      "search": {
+        "placeholder": "Buscar Usuários"
+      },
+      "actions": {
+        "removeUsers": "Remover Usuários",
+        "addUser": "Adicionar Usuário"
+      },
+      "table": {
+        "selectAll": "selecionar todos",
+        "emailName": "E-mail/Nome",
+        "role": "Função",
+        "status": "Status",
+        "lastLogin": "Último Login",
+        "lastLogin": {
+          "never": "Nunca"
+        },
+        "roles": {
+          "orgOwner": "PROPRIETÁRIO DA ORGANIZAÇÃO"
+        },
+        "actions": {
+          "edit": "Editar",
+          "changeRole": "Alterar Função"
+        }
+      },
+      "empty": {
+        "noUsers": "Ainda Não Há Usuários Atribuídos",
+        "addUser": "Adicionar Usuário"
+      },
+      "dialog": {
+        "invite": {
+          "buttons": {
+            "cancel": "Cancelar",
+            "confirm": "Enviar Convite"
+          }
+        },
+        "updateInvite": {
+          "buttons": {
+            "cancel": "Cancelar",
+            "confirm": "Atualizar Convite"
+          }
+        },
+        "updateRole": {
+          "buttons": {
+            "cancel": "Cancelar",
+            "confirm": "Atualizar Função"
+          }
+        },
+        "remove": {
+          "title": "Remover Usuários",
+          "description": "Remover os seguintes usuários do workspace?\n{{userList}}",
+          "buttons": {
+            "confirm": "Remover",
+            "cancel": "Cancelar"
+          }
+        },
+        "editRole": {
+          "title": "Alterar Função do Workspace - {{userEmail}} {{userName}}",
+          "fields": {
+            "role": {
+              "label": "Nova Função para Atribuir",
+              "placeholder": "Selecionar Função"
+            }
+          },
+          "notifications": {
+            "updated": "Detalhes do Usuário do Workspace Atualizados",
+            "updateFailed": "Falha ao atualizar Usuário do Workspace: {{error}}"
+          }
+        }
+      },
+      "notifications": {
+        "cannotRemoveOwner": "O proprietário da organização não pode ser removido do workspace.",
+        "removed": "{{count}} Usuário(s) removido(s) do workspace.",
+        "unlinkFailed": "Falha ao desvincular usuários: {{error}}"
+      }
+    },
+    "dialog": {
+      "addEdit": {
+        "title": {
+          "add": "Adicionar Workspace",
+          "edit": "Editar Workspace"
+        },
+        "fields": {
+          "name": {
+            "label": "Nome"
+          },
+          "description": {
+            "label": "Descrição"
+          }
+        },
+        "buttons": {
+          "cancel": "Cancelar",
+          "confirm": {
+            "add": "Adicionar",
+            "edit": "Salvar"
+          }
+        },
+        "validation": {
+          "reservedName": "O nome do workspace não pode ser Default Workspace ou Personal Workspace - este é um nome reservado"
+        },
+        "notifications": {
+          "added": "Novo Workspace adicionado",
+          "addFailed": "Falha ao adicionar novo Workspace: {{error}}",
+          "saved": "Workspace salvo",
+          "saveFailed": "Falha ao salvar Workspace: {{error}}"
+        }
+      },
+      "delete": {
+        "title": "Excluir Workspace {{workspaceName}}",
+        "description": "Isso é irreversível e removerá todos os dados associados dentro do workspace. Tem certeza de que deseja excluir?",
+        "buttons": {
+          "confirm": "Excluir",
+          "cancel": "Cancelar"
+        }
+      }
+    },
+    "notifications": {
+      "deleted": "Workspace excluído",
+      "deleteFailed": "Falha ao excluir workspace: {{error}}"
+    }
+  },
+  "header": {
+    "github": {
+      "star": "Estrela"
+    },
+    "logout": {
+      "loggingOut": "Saindo..."
+    },
+    "upgrade": {
+      "button": "Atualizar"
+    }
+  },
+  "common": {
+    "buttons": {
+      "save": "Salvar",
+      "cancel": "Cancelar",
+      "delete": "Excluir",
+      "edit": "Editar",
+      "add": "Adicionar",
+      "close": "Fechar",
+      "back": "Voltar"
+    },
+    "search": {
+      "placeholder": "Buscar"
+    }
+  }
+}
+

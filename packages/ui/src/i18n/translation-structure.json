@@ -1,0 +1,373 @@
+{
+  "metadata": {
+    "description": "Estrutura completa de chaves de tradução nested para Flowise UI",
+    "version": "1.0.0",
+    "createdAt": "2025-01-27",
+    "languages": ["en", "pt-BR"],
+    "totalKeys": 300,
+    "structure": "nested"
+  },
+  "structure": {
+    "errors": {
+      "description": "Mensagens de erro e constantes de erro",
+      "keys": [
+        "errors.invalidToken",
+        "errors.tokenExpired",
+        "errors.refreshTokenExpired",
+        "errors.forbidden",
+        "errors.unknownUser",
+        "errors.incorrectPassword",
+        "errors.inactiveUser",
+        "errors.invalidWorkspace",
+        "errors.unknownError",
+        "errors.boundary.title",
+        "errors.boundary.subtitle",
+        "errors.boundary.status",
+        "errors.boundary.message"
+      ]
+    },
+    "menu": {
+      "description": "Itens do menu de navegação",
+      "subcategories": {
+        "primary": {
+          "description": "Itens principais do menu",
+          "keys": [
+            "menu.primary.chatflows",
+            "menu.primary.agentflows",
+            "menu.primary.executions",
+            "menu.primary.assistants",
+            "menu.primary.marketplaces",
+            "menu.primary.tools",
+            "menu.primary.credentials",
+            "menu.primary.variables",
+            "menu.primary.apiKeys",
+            "menu.primary.documentStores"
+          ]
+        },
+        "evaluations": {
+          "description": "Grupo de avaliações",
+          "keys": [
+            "menu.evaluations.title",
+            "menu.evaluations.datasets",
+            "menu.evaluations.evaluators",
+            "menu.evaluations.evaluations"
+          ]
+        },
+        "management": {
+          "description": "Grupo de gerenciamento",
+          "keys": [
+            "menu.management.title",
+            "menu.management.ssoConfig",
+            "menu.management.roles",
+            "menu.management.users",
+            "menu.management.workspaces",
+            "menu.management.loginActivity"
+          ]
+        },
+        "others": {
+          "description": "Grupo outros",
+          "keys": [
+            "menu.others.title",
+            "menu.others.logs",
+            "menu.others.accountSettings"
+          ]
+        }
+      }
+    },
+    "auth": {
+      "description": "Autenticação e páginas relacionadas",
+      "subcategories": {
+        "signIn": {
+          "description": "Página de login",
+          "keys": [
+            "auth.signIn.title",
+            "auth.signIn.fields.username.label",
+            "auth.signIn.fields.username.placeholder",
+            "auth.signIn.fields.email.label",
+            "auth.signIn.fields.password.label",
+            "auth.signIn.fields.password.placeholder",
+            "auth.signIn.buttons.login",
+            "auth.signIn.buttons.resendVerification",
+            "auth.signIn.buttons.sso.microsoft",
+            "auth.signIn.buttons.sso.google",
+            "auth.signIn.buttons.sso.auth0",
+            "auth.signIn.buttons.sso.github",
+            "auth.signIn.links.noAccount",
+            "auth.signIn.links.signUpFree",
+            "auth.signIn.links.haveInvite",
+            "auth.signIn.links.signUpAccount",
+            "auth.signIn.links.forgotPassword",
+            "auth.signIn.divider.or",
+            "auth.signIn.messages.verificationEmailSent",
+            "auth.signIn.messages.verificationEmailFailed"
+          ]
+        },
+        "register": {
+          "description": "Página de registro",
+          "keys": [
+            "auth.register.title",
+            "auth.register.fields.username.label",
+            "auth.register.fields.username.placeholder",
+            "auth.register.fields.fullName.label",
+            "auth.register.fields.fullName.placeholder",
+            "auth.register.fields.fullName.hint",
+            "auth.register.fields.email.label",
+            "auth.register.fields.email.placeholder",
+            "auth.register.fields.email.hint",
+            "auth.register.fields.password.label",
+            "auth.register.fields.password.placeholder",
+            "auth.register.fields.password.hint",
+            "auth.register.fields.confirmPassword.label",
+            "auth.register.fields.confirmPassword.placeholder",
+            "auth.register.fields.confirmPassword.hint",
+            "auth.register.fields.inviteCode.label",
+            "auth.register.fields.inviteCode.placeholder",
+            "auth.register.fields.inviteCode.hint",
+            "auth.register.buttons.createAccount",
+            "auth.register.buttons.sso.microsoft",
+            "auth.register.buttons.sso.google",
+            "auth.register.buttons.sso.auth0",
+            "auth.register.buttons.sso.github",
+            "auth.register.links.haveAccount",
+            "auth.register.links.signIn",
+            "auth.register.divider.or",
+            "auth.register.messages.successEnterprise",
+            "auth.register.messages.successCloud"
+          ]
+        },
+        "resetPassword": {
+          "description": "Página de redefinição de senha",
+          "keys": [
+            "auth.resetPassword.title",
+            "auth.resetPassword.fields.email.label",
+            "auth.resetPassword.fields.email.placeholder",
+            "auth.resetPassword.fields.password.label",
+            "auth.resetPassword.fields.password.placeholder",
+            "auth.resetPassword.fields.newPassword.label",
+            "auth.resetPassword.fields.newPassword.hint",
+            "auth.resetPassword.fields.confirmPassword.label",
+            "auth.resetPassword.fields.confirmPassword.placeholder",
+            "auth.resetPassword.fields.confirmPassword.hint",
+            "auth.resetPassword.fields.resetToken.label",
+            "auth.resetPassword.fields.resetToken.placeholder",
+            "auth.resetPassword.fields.resetToken.hint",
+            "auth.resetPassword.buttons.updatePassword",
+            "auth.resetPassword.links.backToLogin",
+            "auth.resetPassword.validation.tokenRequired",
+            "auth.resetPassword.validation.passwordMismatch",
+            "auth.resetPassword.messages.success",
+            "auth.resetPassword.messages.failed"
+          ]
+        },
+        "setupAccount": {
+          "description": "Página de configuração de conta",
+          "keys": [
+            "auth.setupAccount.title",
+            "auth.setupAccount.fields.organization.label",
+            "auth.setupAccount.fields.organization.placeholder",
+            "auth.setupAccount.fields.orgName.label",
+            "auth.setupAccount.fields.orgName.placeholder",
+            "auth.setupAccount.fields.username.label",
+            "auth.setupAccount.fields.username.placeholder",
+            "auth.setupAccount.fields.existingUsername.label",
+            "auth.setupAccount.fields.existingUsername.placeholder",
+            "auth.setupAccount.fields.existingUsername.hint",
+            "auth.setupAccount.fields.existingPassword.label",
+            "auth.setupAccount.fields.existingPassword.placeholder",
+            "auth.setupAccount.fields.existingPassword.hint",
+            "auth.setupAccount.fields.adminName.label",
+            "auth.setupAccount.fields.adminName.placeholder",
+            "auth.setupAccount.fields.adminName.hint",
+            "auth.setupAccount.fields.adminEmail.label",
+            "auth.setupAccount.fields.adminEmail.hint",
+            "auth.setupAccount.fields.email.label",
+            "auth.setupAccount.fields.email.placeholder",
+            "auth.setupAccount.fields.password.label",
+            "auth.setupAccount.fields.password.placeholder",
+            "auth.setupAccount.fields.password.hint",
+            "auth.setupAccount.fields.confirmPassword.label",
+            "auth.setupAccount.fields.confirmPassword.placeholder",
+            "auth.setupAccount.fields.confirmPassword.hint",
+            "auth.setupAccount.buttons.signUp",
+            "auth.setupAccount.buttons.sso.microsoft",
+            "auth.setupAccount.buttons.sso.google",
+            "auth.setupAccount.buttons.sso.auth0",
+            "auth.setupAccount.alerts.requiresAuth",
+            "auth.setupAccount.info.localHost",
+            "auth.setupAccount.dividers.newAccountDetails",
+            "auth.setupAccount.dividers.accountAdministrator",
+            "auth.setupAccount.divider.or"
+          ]
+        }
+      }
+    },
+    "workspace": {
+      "description": "Gerenciamento de workspaces",
+      "subcategories": {
+        "list": {
+          "description": "Lista de workspaces",
+          "keys": [
+            "workspace.list.title",
+            "workspace.list.status.active",
+            "workspace.list.actions.edit",
+            "workspace.list.actions.workspaceUsers",
+            "workspace.list.actions.delete",
+            "workspace.list.actions.addNew",
+            "workspace.list.search.placeholder",
+            "workspace.list.table.name",
+            "workspace.list.table.description",
+            "workspace.list.table.users",
+            "workspace.list.table.lastUpdated",
+            "workspace.list.drawer.users.title",
+            "workspace.list.drawer.users.table.user",
+            "workspace.list.drawer.users.table.role",
+            "workspace.list.drawer.users.roles.orgOwner",
+            "workspace.list.drawer.users.roles.personalWorkspace",
+            "workspace.list.empty.noWorkspaces",
+            "workspace.list.loading.switching",
+            "workspace.list.loading.deleting"
+          ]
+        },
+        "users": {
+          "description": "Usuários do workspace",
+          "keys": [
+            "workspace.users.title",
+            "workspace.users.description",
+            "workspace.users.search.placeholder",
+            "workspace.users.actions.removeUsers",
+            "workspace.users.actions.addUser",
+            "workspace.users.table.selectAll",
+            "workspace.users.table.emailName",
+            "workspace.users.table.role",
+            "workspace.users.table.status",
+            "workspace.users.table.lastLogin",
+            "workspace.users.table.lastLogin.never",
+            "workspace.users.table.roles.orgOwner",
+            "workspace.users.table.actions.edit",
+            "workspace.users.table.actions.changeRole",
+            "workspace.users.empty.noUsers",
+            "workspace.users.empty.addUser",
+            "workspace.users.dialog.invite.buttons.cancel",
+            "workspace.users.dialog.invite.buttons.confirm",
+            "workspace.users.dialog.updateInvite.buttons.cancel",
+            "workspace.users.dialog.updateInvite.buttons.confirm",
+            "workspace.users.dialog.updateRole.buttons.cancel",
+            "workspace.users.dialog.updateRole.buttons.confirm",
+            "workspace.users.dialog.remove.title",
+            "workspace.users.dialog.remove.description",
+            "workspace.users.dialog.remove.buttons.confirm",
+            "workspace.users.dialog.remove.buttons.cancel",
+            "workspace.users.dialog.editRole.title",
+            "workspace.users.dialog.editRole.fields.role.label",
+            "workspace.users.dialog.editRole.fields.role.placeholder",
+            "workspace.users.dialog.editRole.notifications.updated",
+            "workspace.users.dialog.editRole.notifications.updateFailed",
+            "workspace.users.notifications.cannotRemoveOwner",
+            "workspace.users.notifications.removed",
+            "workspace.users.notifications.unlinkFailed"
+          ]
+        },
+        "dialog": {
+          "description": "Diálogos de workspace",
+          "keys": [
+            "workspace.dialog.addEdit.title.add",
+            "workspace.dialog.addEdit.title.edit",
+            "workspace.dialog.addEdit.fields.name.label",
+            "workspace.dialog.addEdit.fields.description.label",
+            "workspace.dialog.addEdit.buttons.cancel",
+            "workspace.dialog.addEdit.buttons.confirm.add",
+            "workspace.dialog.addEdit.buttons.confirm.edit",
+            "workspace.dialog.addEdit.validation.reservedName",
+            "workspace.dialog.addEdit.notifications.added",
+            "workspace.dialog.addEdit.notifications.addFailed",
+            "workspace.dialog.addEdit.notifications.saved",
+            "workspace.dialog.addEdit.notifications.saveFailed",
+            "workspace.dialog.delete.title",
+            "workspace.dialog.delete.description",
+            "workspace.dialog.delete.buttons.confirm",
+            "workspace.dialog.delete.buttons.cancel"
+          ]
+        },
+        "notifications": {
+          "description": "Notificações de workspace",
+          "keys": [
+            "workspace.notifications.deleted",
+            "workspace.notifications.deleteFailed"
+          ]
+        }
+      }
+    },
+    "header": {
+      "description": "Header e navegação",
+      "keys": [
+        "header.github.star",
+        "header.logout.loggingOut",
+        "header.upgrade.button"
+      ]
+    },
+    "common": {
+      "description": "Componentes e strings comuns",
+      "keys": [
+        "common.buttons.save",
+        "common.buttons.cancel",
+        "common.buttons.delete",
+        "common.buttons.edit",
+        "common.buttons.add",
+        "common.buttons.close",
+        "common.buttons.back",
+        "common.search.placeholder"
+      ]
+    }
+  },
+  "interpolation": {
+    "description": "Chaves que requerem interpolação de variáveis",
+    "keys": [
+      {
+        "key": "workspace.dialog.delete.title",
+        "variables": ["workspaceName"],
+        "example": "Delete Workspace {{workspaceName}}"
+      },
+      {
+        "key": "workspace.users.dialog.remove.description",
+        "variables": ["userList"],
+        "example": "Remove the following users from the workspace?\n{{userList}}"
+      },
+      {
+        "key": "workspace.users.notifications.removed",
+        "variables": ["count"],
+        "example": "{{count}} User(s) removed from workspace."
+      },
+      {
+        "key": "workspace.users.title",
+        "variables": ["workspaceName"],
+        "example": "{{workspaceName}}: Workspace Users"
+      },
+      {
+        "key": "workspace.users.dialog.editRole.title",
+        "variables": ["userEmail", "userName"],
+        "example": "Change Workspace Role - {{userEmail}} {{userName}}"
+      },
+      {
+        "key": "errors.boundary.status",
+        "variables": ["status"],
+        "example": "Status: {{status}}"
+      }
+    ]
+  },
+  "statistics": {
+    "totalKeys": 300,
+    "categories": {
+      "errors": 13,
+      "menu": 20,
+      "auth": 120,
+      "workspace": 80,
+      "header": 3,
+      "common": 8
+    },
+    "languages": {
+      "en": "Inglês (baseline)",
+      "pt-BR": "Português Brasileiro"
+    }
+  }
+}
+

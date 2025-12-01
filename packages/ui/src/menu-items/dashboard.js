@@ -77,7 +77,7 @@ const dashboard = {
                 },
                 {
                     id: 'agentflows',
-                    title: 'Agentflows',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.agentflows') : 'Agentflows',
                     type: 'item',
                     url: '/agentflows',
                     icon: icons.IconUsersGroup,
@@ -86,7 +86,7 @@ const dashboard = {
                 },
                 {
                     id: 'executions',
-                    title: 'Executions',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.executions') : 'Executions',
                     type: 'item',
                     url: '/executions',
                     icon: icons.IconListCheck,
@@ -95,7 +95,7 @@ const dashboard = {
                 },
                 {
                     id: 'assistants',
-                    title: 'Assistants',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.assistants') : 'Assistants',
                     type: 'item',
                     url: '/assistants',
                     icon: icons.IconRobot,
@@ -104,7 +104,7 @@ const dashboard = {
                 },
                 {
                     id: 'marketplaces',
-                    title: 'Marketplaces',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.marketplaces') : 'Marketplaces',
                     type: 'item',
                     url: '/marketplaces',
                     icon: icons.IconBuildingStore,
@@ -113,7 +113,7 @@ const dashboard = {
                 },
                 {
                     id: 'tools',
-                    title: 'Tools',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.tools') : 'Tools',
                     type: 'item',
                     url: '/tools',
                     icon: icons.IconTool,
@@ -122,7 +122,7 @@ const dashboard = {
                 },
                 {
                     id: 'credentials',
-                    title: 'Credentials',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.credentials') : 'Credentials',
                     type: 'item',
                     url: '/credentials',
                     icon: icons.IconLock,
@@ -131,7 +131,7 @@ const dashboard = {
                 },
                 {
                     id: 'variables',
-                    title: 'Variables',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.variables') : 'Variables',
                     type: 'item',
                     url: '/variables',
                     icon: icons.IconVariable,
@@ -140,7 +140,7 @@ const dashboard = {
                 },
                 {
                     id: 'apikey',
-                    title: 'API Keys',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.apiKeys') : 'API Keys',
                     type: 'item',
                     url: '/apikey',
                     icon: icons.IconKey,
@@ -149,7 +149,7 @@ const dashboard = {
                 },
                 {
                     id: 'document-stores',
-                    title: 'Document Stores',
+                    title: i18n.isInitialized ? i18n.t('menu.primary.documentStores') : 'Document Stores',
                     type: 'item',
                     url: '/document-stores',
                     icon: icons.IconFiles,
@@ -288,6 +288,42 @@ const dashboard = {
             ]
         }
     ]
+}
+
+// Mapeamento de IDs do menu para chaves de tradução
+const menuTranslationKeys = {
+    // Primary items
+    'chatflows': 'menu.primary.chatflows',
+    'agentflows': 'menu.primary.agentflows',
+    'executions': 'menu.primary.executions',
+    'assistants': 'menu.primary.assistants',
+    'marketplaces': 'menu.primary.marketplaces',
+    'tools': 'menu.primary.tools',
+    'credentials': 'menu.primary.credentials',
+    'variables': 'menu.primary.variables',
+    'apikey': 'menu.primary.apiKeys',
+    'document-stores': 'menu.primary.documentStores',
+    // Evaluations group
+    'evaluations': 'menu.evaluations.title',
+    'datasets': 'menu.evaluations.datasets',
+    'evaluators': 'menu.evaluations.evaluators',
+    // Management group
+    'management': 'menu.management.title',
+    'sso': 'menu.management.ssoConfig',
+    'roles': 'menu.management.roles',
+    'users': 'menu.management.users',
+    'workspaces': 'menu.management.workspaces',
+    'login-activity': 'menu.management.loginActivity',
+    // Others group
+    'others': 'menu.others.title',
+    'logs': 'menu.others.logs',
+    'account': 'menu.others.accountSettings'
+}
+
+// Função helper para traduzir título do menu
+export const translateMenuTitle = (id, t) => {
+    const translationKey = menuTranslationKeys[id]
+    return translationKey ? t(translationKey) : id
 }
 
 export default dashboard

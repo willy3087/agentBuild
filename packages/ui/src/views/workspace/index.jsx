@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types'
 import { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -62,6 +63,7 @@ import { Link } from 'react-router-dom'
 function ShowWorkspaceRow(props) {
     const customization = useSelector((state) => state.customization)
     const currentUser = useSelector((state) => state.auth.user)
+    const { t } = useTranslation()
     const [open, setOpen] = useState(false)
     const [selectedWorkspaceId, setSelectedWorkspaceId] = useState('')
     const [workspaceUsers, setWorkspaceUsers] = useState([])
@@ -105,7 +107,7 @@ function ShowWorkspaceRow(props) {
                                 background: theme.palette.teal.main,
                                 color: 'white'
                             }}
-                            label={'Active'}
+                            label={t('workspace.list.status.active')}
                         />
                     )}
                 </StyledTableCell>
@@ -130,7 +132,7 @@ function ShowWorkspaceRow(props) {
                     {props.workspace.name !== 'Default Workspace' && (
                         <PermissionIconButton
                             permissionId={'workspace:update'}
-                            title='Edit'
+                            title={t('workspace.list.actions.edit')}
                             color='primary'
                             onClick={() => props.onEditClick(props.workspace)}
                         >
@@ -138,19 +140,19 @@ function ShowWorkspaceRow(props) {
                         </PermissionIconButton>
                     )}
                     <Link to={`/workspace-users/${props.workspace.id}`}>
-                        <IconButton title='Workspace Users' color='primary'>
+                        <IconButton title={t('workspace.list.actions.workspaceUsers')} color='primary'>
                             <IconUsers />
                         </IconButton>
                     </Link>
                     {props.workspace.name !== 'Default Workspace' &&
                         (props.workspace.userCount > 1 || props.workspace.isOrgDefault === true ? (
-                            <IconButton title='Delete' disabled={true} color='error' onClick={() => props.onDeleteClick(props.workspace)}>
+                            <IconButton title={t('workspace.list.actions.delete')} disabled={true} color='error' onClick={() => props.onDeleteClick(props.workspace)}>
                                 <IconTrashOff />
                             </IconButton>
                         ) : (
                             <PermissionIconButton
                                 permissionId={'workspace:delete'}
-                                title='Delete'
+                                title={t('workspace.list.actions.delete')}
                                 color='error'
                                 onClick={() => props.onDeleteClick(props.workspace)}
                             >
@@ -162,7 +164,7 @@ function ShowWorkspaceRow(props) {
             <Drawer anchor='right' open={open} onClose={() => setOpen(false)} sx={{ minWidth: 320 }}>
                 <Box sx={{ p: 4, height: 'auto', width: 650 }}>
                     <Typography sx={{ textAlign: 'left', mb: 2 }} variant='h2'>
-                        Users
+                        {t('workspace.list.drawer.users.title')}
                     </Typography>
                     <TableContainer
                         style={{ display: 'flex', flexDirection: 'row' }}
@@ -177,8 +179,8 @@ function ShowWorkspaceRow(props) {
                                 }}
                             >
                                 <TableRow>
-                                    <StyledTableCell sx={{ width: '60%' }}>User</StyledTableCell>
-                                    <StyledTableCell sx={{ width: '40%' }}>Role</StyledTableCell>
+                                    <StyledTableCell sx={{ width: '60%' }}>{t('workspace.list.drawer.users.table.user')}</StyledTableCell>
+                                    <StyledTableCell sx={{ width: '40%' }}>{t('workspace.list.drawer.users.table.role')}</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -189,9 +191,9 @@ function ShowWorkspaceRow(props) {
                                             <StyledTableCell>{item.user.name || item.user.email}</StyledTableCell>
                                             <StyledTableCell>
                                                 {item.isOrgOwner ? (
-                                                    <Chip label='ORGANIZATION OWNER' size={'small'} />
+                                                    <Chip label={t('workspace.list.drawer.users.roles.orgOwner')} size={'small'} />
                                                 ) : item.role.name === 'personal workspace' ? (
-                                                    <Chip label='PERSONAL WORKSPACE' size={'small'} />
+                                                    <Chip label={t('workspace.list.drawer.users.roles.personalWorkspace')} size={'small'} />
                                                 ) : (
                                                     item.role.name
                                                 )}
@@ -222,6 +224,7 @@ ShowWorkspaceRow.propTypes = {
 const Workspaces = () => {
     const navigate = useNavigate()
     const theme = useTheme()
+    const { t } = useTranslation()
     const { confirm } = useConfirm()
     const currentUser = useSelector((state) => state.auth.user)
     const customization = useSelector((state) => state.customization)
@@ -254,8 +257,8 @@ const Workspaces = () => {
     const addNew = () => {
         const dialogProp = {
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add',
+            cancelButtonName: t('workspace.dialog.addEdit.buttons.cancel'),
+            confirmButtonName: t('workspace.dialog.addEdit.buttons.confirm.add'),
             data: {}
         }
         setWorkspaceDialogProps(dialogProp)
@@ -265,8 +268,8 @@ const Workspaces = () => {
     const edit = (workspace) => {
         const dialogProp = {
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: t('workspace.dialog.addEdit.buttons.cancel'),
+            confirmButtonName: t('workspace.dialog.addEdit.buttons.confirm.edit'),
             data: workspace
         }
         setWorkspaceDialogProps(dialogProp)
@@ -275,10 +278,10 @@ const Workspaces = () => {
 
     const deleteWorkspace = async (workspace) => {
         const confirmPayload = {
-            title: `Delete Workspace ${workspace.name}`,
-            description: `This is irreversible and will remove all associated data inside the workspace. Are you sure you want to delete?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('workspace.dialog.delete.title', { workspaceName: workspace.name }),
+            description: t('workspace.dialog.delete.description'),
+            confirmButtonName: t('workspace.dialog.delete.buttons.confirm'),
+            cancelButtonName: t('workspace.dialog.delete.buttons.cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -289,7 +292,7 @@ const Workspaces = () => {
                 const deleteResp = await workspaceApi.deleteWorkspace(deleteWorkspaceId)
                 if (deleteResp.data) {
                     enqueueSnackbar({
-                        message: 'Workspace deleted',
+                        message: t('workspace.notifications.deleted'),
                         options: {
                             key: new Date().getTime() + Math.random(),
                             variant: 'success',
@@ -305,9 +308,9 @@ const Workspaces = () => {
             } catch (error) {
                 console.error('Failed to delete workspace:', error)
                 enqueueSnackbar({
-                    message: `Failed to delete workspace: ${
-                        typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                    }`,
+                    message: t('workspace.notifications.deleteFailed', {
+                        error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                    }),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -407,8 +410,8 @@ const Workspaces = () => {
                             isEditButton={false}
                             onSearchChange={onSearchChange}
                             search={true}
-                            title='Workspaces'
-                            searchPlaceholder='Search Workspaces'
+                            title={t('workspace.list.title')}
+                            searchPlaceholder={t('workspace.list.search.placeholder')}
                         >
                             <StyledPermissionButton
                                 permissionId={'workspace:create'}
@@ -417,7 +420,7 @@ const Workspaces = () => {
                                 onClick={addNew}
                                 startIcon={<IconPlus />}
                             >
-                                Add New
+                                {t('workspace.list.actions.addNew')}
                             </StyledPermissionButton>
                         </ViewHeader>
                         {!isLoading && workspaces.length <= 0 ? (
@@ -429,7 +432,7 @@ const Workspaces = () => {
                                         alt='workspaces_emptySVG'
                                     />
                                 </Box>
-                                <div>No Workspaces Yet</div>
+                                <div>{t('workspace.list.empty.noWorkspaces')}</div>
                             </Stack>
                         ) : (
                             <TableContainer
@@ -446,10 +449,10 @@ const Workspaces = () => {
                                         }}
                                     >
                                         <TableRow>
-                                            <TableCell>Name</TableCell>
-                                            <TableCell>Description</TableCell>
-                                            <TableCell>Users</TableCell>
-                                            <TableCell>Last Updated</TableCell>
+                                            <TableCell>{t('workspace.list.table.name')}</TableCell>
+                                            <TableCell>{t('workspace.list.table.description')}</TableCell>
+                                            <TableCell>{t('workspace.list.table.users')}</TableCell>
+                                            <TableCell>{t('workspace.list.table.lastUpdated')}</TableCell>
                                             <TableCell> </TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -526,7 +529,7 @@ const Workspaces = () => {
                     <Stack spacing={2} alignItems='center'>
                         <CircularProgress />
                         <Typography variant='body1' style={{ color: 'white' }}>
-                            Switching workspace...
+                            {t('workspace.list.loading.switching')}
                         </Typography>
                     </Stack>
                 </DialogContent>
@@ -536,7 +539,7 @@ const Workspaces = () => {
                     <Stack spacing={2} alignItems='center'>
                         <CircularProgress />
                         <Typography variant='body1' style={{ color: 'white' }}>
-                            Deleting workspace...
+                            {t('workspace.list.loading.deleting')}
                         </Typography>
                     </Stack>
                 </DialogContent>

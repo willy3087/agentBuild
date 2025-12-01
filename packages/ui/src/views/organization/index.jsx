@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
 // material-ui
@@ -48,42 +49,43 @@ const OrgSetupSchema = z
     })
 
 const OrganizationSetupPage = () => {
+    const { t } = useTranslation()
     useNotifier()
     const { isEnterpriseLicensed, isOpenSource } = useConfig()
 
     const orgNameInput = {
-        label: 'Organization',
+        label: t('auth.setupAccount.fields.organization.label'),
         name: 'organization',
         type: 'text',
-        placeholder: 'Acme'
+        placeholder: t('auth.setupAccount.fields.organization.placeholder')
     }
 
     const usernameInput = {
-        label: 'Username',
+        label: t('auth.setupAccount.fields.username.label'),
         name: 'username',
         type: 'text',
-        placeholder: 'John Doe'
+        placeholder: t('auth.setupAccount.fields.username.placeholder')
     }
 
     const passwordInput = {
-        label: 'Password',
+        label: t('auth.setupAccount.fields.password.label'),
         name: 'password',
         type: 'password',
-        placeholder: '********'
+        placeholder: t('auth.setupAccount.fields.password.placeholder')
     }
 
     const confirmPasswordInput = {
-        label: 'Confirm Password',
+        label: t('auth.setupAccount.fields.confirmPassword.label'),
         name: 'confirmPassword',
         type: 'password',
-        placeholder: '********'
+        placeholder: t('auth.setupAccount.fields.confirmPassword.placeholder')
     }
 
     const emailInput = {
-        label: 'EMail',
+        label: t('auth.setupAccount.fields.email.label'),
         name: 'email',
         type: 'email',
-        placeholder: 'user@company.com'
+        placeholder: t('auth.setupAccount.fields.email.placeholder')
     }
 
     const [email, setEmail] = useState('')
@@ -269,16 +271,16 @@ const OrganizationSetupPage = () => {
                         </Alert>
                     )}
                     <Stack sx={{ gap: 1 }}>
-                        <Typography variant='h1'>Setup Account</Typography>
+                        <Typography variant='h1'>{t('auth.setupAccount.title')}</Typography>
                     </Stack>
                     {requiresAuthentication && (
                         <Alert severity='info'>
-                            Application authentication now requires email and password. Contact administrator to setup an account.
+                            {t('auth.setupAccount.alerts.requiresAuth')}
                         </Alert>
                     )}
                     {(isOpenSource || isEnterpriseLicensed) && (
                         <Typography variant='caption'>
-                            Account setup does not make any external connections, your data stays securely on your locally hosted server.
+                            {t('auth.setupAccount.info.localHost')}
                         </Typography>
                     )}
                     <form onSubmit={register}>
@@ -288,40 +290,40 @@ const OrganizationSetupPage = () => {
                                     <Box>
                                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                                             <Typography sx={{ mb: 1 }}>
-                                                Existing Username<span style={{ color: 'red' }}>&nbsp;*</span>
+                                                {t('auth.setupAccount.fields.existingUsername.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                             </Typography>
                                             <div style={{ flexGrow: 1 }}></div>
                                         </div>
                                         <TextField
                                             fullWidth
-                                            placeholder='Existing Username'
+                                            placeholder={t('auth.setupAccount.fields.existingUsername.placeholder')}
                                             value={existingUsername}
                                             onChange={(e) => setExistingUsername(e.target.value)}
                                         />
                                         <Typography variant='caption'>
-                                            <i>Existing username that was set as FLOWISE_USERNAME environment variable</i>
+                                            <i>{t('auth.setupAccount.fields.existingUsername.hint')}</i>
                                         </Typography>
                                     </Box>
                                     <Box>
                                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                                             <Typography sx={{ mb: 1 }}>
-                                                Existing Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                                {t('auth.setupAccount.fields.existingPassword.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                             </Typography>
                                             <div style={{ flexGrow: 1 }}></div>
                                         </div>
                                         <TextField
                                             fullWidth
                                             type='password'
-                                            placeholder='Existing Password'
+                                            placeholder={t('auth.setupAccount.fields.existingPassword.placeholder')}
                                             value={existingPassword}
                                             onChange={(e) => setExistingPassword(e.target.value)}
                                         />
                                         <Typography variant='caption'>
-                                            <i>Existing password that was set as FLOWISE_PASSWORD environment variable</i>
+                                            <i>{t('auth.setupAccount.fields.existingPassword.hint')}</i>
                                         </Typography>
                                     </Box>
                                     <Divider>
-                                        <Chip label='New Account Details' size='small' />
+                                        <Chip label={t('auth.setupAccount.dividers.newAccountDetails')} size='small' />
                                     </Divider>
                                 </>
                             )}
@@ -330,13 +332,13 @@ const OrganizationSetupPage = () => {
                                     <Box>
                                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                                             <Typography>
-                                                Organization Name:<span style={{ color: 'red' }}>&nbsp;*</span>
+                                                {t('auth.setupAccount.fields.orgName.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                             </Typography>
                                             <div style={{ flexGrow: 1 }}></div>
                                         </div>
                                         <Input
                                             inputParam={orgNameInput}
-                                            placeholder='Organization Name'
+                                            placeholder={t('auth.setupAccount.fields.orgName.placeholder')}
                                             onChange={(newValue) => setOrgName(newValue)}
                                             value={orgName}
                                             showDialog={false}
@@ -344,7 +346,7 @@ const OrganizationSetupPage = () => {
                                     </Box>
                                     <Box>
                                         <Divider>
-                                            <Chip label='Account Administrator' size='small' />
+                                            <Chip label={t('auth.setupAccount.dividers.accountAdministrator')} size='small' />
                                         </Divider>
                                     </Box>
                                 </>
@@ -352,25 +354,25 @@ const OrganizationSetupPage = () => {
                             <Box>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Administrator Name<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.setupAccount.fields.adminName.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
                                 <Input
                                     inputParam={usernameInput}
-                                    placeholder='Display Name'
+                                    placeholder={t('auth.setupAccount.fields.adminName.placeholder')}
                                     onChange={(newValue) => setUsername(newValue)}
                                     value={username}
                                     showDialog={false}
                                 />
                                 <Typography variant='caption'>
-                                    <i>Is used for display purposes only.</i>
+                                    <i>{t('auth.setupAccount.fields.adminName.hint')}</i>
                                 </Typography>
                             </Box>
                             <Box>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Administrator Email<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.setupAccount.fields.adminEmail.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
@@ -382,28 +384,25 @@ const OrganizationSetupPage = () => {
                                     showDialog={false}
                                 />
                                 <Typography variant='caption'>
-                                    <i>Kindly use a valid email address. Will be used as login id.</i>
+                                    <i>{t('auth.setupAccount.fields.adminEmail.hint')}</i>
                                 </Typography>
                             </Box>
                             <Box>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.setupAccount.fields.password.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
                                 <Input inputParam={passwordInput} onChange={(newValue) => setPassword(newValue)} value={password} />
                                 <Typography variant='caption'>
-                                    <i>
-                                        Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase
-                                        letter, one digit, and one special character.
-                                    </i>
+                                    <i>{t('auth.setupAccount.fields.password.hint')}</i>
                                 </Typography>
                             </Box>
                             <Box>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Confirm Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.setupAccount.fields.confirmPassword.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
@@ -413,7 +412,7 @@ const OrganizationSetupPage = () => {
                                     value={confirmPassword}
                                 />
                                 <Typography variant='caption'>
-                                    <i>Reconfirm your password. Must match the password typed above.</i>
+                                    <i>{t('auth.setupAccount.fields.confirmPassword.hint')}</i>
                                 </Typography>
                             </Box>
                             <StyledButton
@@ -422,9 +421,9 @@ const OrganizationSetupPage = () => {
                                 type='submit'
                                 disabled={requiresAuthentication && (!existingUsername || !existingPassword)}
                             >
-                                Sign Up
+                                {t('auth.setupAccount.buttons.signUp')}
                             </StyledButton>
-                            {configuredSsoProviders && configuredSsoProviders.length > 0 && <Divider sx={{ width: '100%' }}>OR</Divider>}
+                            {configuredSsoProviders && configuredSsoProviders.length > 0 && <Divider sx={{ width: '100%' }}>{t('auth.setupAccount.divider.or')}</Divider>}
                             {configuredSsoProviders &&
                                 configuredSsoProviders.map(
                                     (ssoProvider) =>
@@ -441,7 +440,7 @@ const OrganizationSetupPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign Up With Microsoft
+                                                {t('auth.setupAccount.buttons.sso.microsoft')}
                                             </Button>
                                         )
                                 )}
@@ -460,7 +459,7 @@ const OrganizationSetupPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign Up With Google
+                                                {t('auth.setupAccount.buttons.sso.google')}
                                             </Button>
                                         )
                                 )}
@@ -479,7 +478,7 @@ const OrganizationSetupPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign Up With Auth0 by Okta
+                                                {t('auth.setupAccount.buttons.sso.auth0')}
                                             </Button>
                                         )
                                 )}

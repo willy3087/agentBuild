@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Stack, useTheme, Typography, Box, Alert, Button, Divider, Icon } from '@mui/material'
@@ -39,21 +40,22 @@ import GithubSSOLoginIcon from '@/assets/images/github.svg'
 
 const SignInPage = () => {
     const theme = useTheme()
+    const { t } = useTranslation()
     useSelector((state) => state.customization)
     useNotifier()
     const { isEnterpriseLicensed, isCloud, isOpenSource } = useConfig()
 
     const usernameInput = {
-        label: 'Username',
+        label: t('auth.signIn.fields.email.label'),
         name: 'username',
         type: 'email',
-        placeholder: 'user@company.com'
+        placeholder: t('auth.signIn.fields.username.placeholder')
     }
     const passwordInput = {
-        label: 'Password',
+        label: t('auth.signIn.fields.password.label'),
         name: 'password',
         type: 'password',
-        placeholder: '********'
+        placeholder: t('auth.signIn.fields.password.placeholder')
     }
     const [usernameVal, setUsernameVal] = useState('')
     const [passwordVal, setPasswordVal] = useState('')
@@ -168,10 +170,10 @@ const SignInPage = () => {
         try {
             await resendVerificationApi.request({ email: usernameVal })
             setAuthError(undefined)
-            setSuccessMessage('Verification email has been sent successfully.')
+            setSuccessMessage(t('auth.signIn.messages.verificationEmailSent'))
             setShowResendButton(false)
         } catch (error) {
-            setAuthError(error.response?.data?.message || 'Failed to send verification email.')
+            setAuthError(error.response?.data?.message || t('auth.signIn.messages.verificationEmailFailed'))
         }
     }
 
@@ -197,26 +199,26 @@ const SignInPage = () => {
                     {showResendButton && (
                         <Stack sx={{ gap: 1 }}>
                             <Button variant='text' onClick={handleResendVerification}>
-                                Resend Verification Email
+                                {t('auth.signIn.buttons.resendVerification')}
                             </Button>
                         </Stack>
                     )}
                     <Stack sx={{ gap: 1 }}>
-                        <Typography variant='h1'>Sign In</Typography>
+                        <Typography variant='h1'>{t('auth.signIn.title')}</Typography>
                         {isCloud && (
                             <Typography variant='body2' sx={{ color: theme.palette.grey[600] }}>
-                                Don&apos;t have an account?{' '}
+                                {t('auth.signIn.links.noAccount')}{' '}
                                 <Link style={{ color: `${theme.palette.primary.main}` }} to='/register'>
-                                    Sign up for free
+                                    {t('auth.signIn.links.signUpFree')}
                                 </Link>
                                 .
                             </Typography>
                         )}
                         {isEnterpriseLicensed && (
                             <Typography variant='body2' sx={{ color: theme.palette.grey[600] }}>
-                                Have an invite code?{' '}
+                                {t('auth.signIn.links.haveInvite')}{' '}
                                 <Link style={{ color: `${theme.palette.primary.main}` }} to='/register'>
-                                    Sign up for an account
+                                    {t('auth.signIn.links.signUpAccount')}
                                 </Link>
                                 .
                             </Typography>
@@ -227,7 +229,7 @@ const SignInPage = () => {
                             <Box sx={{ p: 0 }}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Email<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.signIn.fields.email.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
@@ -241,14 +243,14 @@ const SignInPage = () => {
                             <Box sx={{ p: 0 }}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.signIn.fields.password.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
                                 <Input inputParam={passwordInput} onChange={(newValue) => setPasswordVal(newValue)} value={passwordVal} />
                                 <Typography variant='body2' sx={{ color: theme.palette.grey[600], mt: 1, textAlign: 'right' }}>
                                     <Link style={{ color: theme.palette.primary.main }} to='/forgot-password'>
-                                        Forgot password?
+                                        {t('auth.signIn.links.forgotPassword')}
                                     </Link>
                                 </Typography>
                             </Box>
@@ -258,9 +260,9 @@ const SignInPage = () => {
                                 style={{ borderRadius: 12, height: 40, marginRight: 5 }}
                                 type='submit'
                             >
-                                Login
+                                {t('auth.signIn.buttons.login')}
                             </LoadingButton>
-                            {configuredSsoProviders && configuredSsoProviders.length > 0 && <Divider sx={{ width: '100%' }}>OR</Divider>}
+                            {configuredSsoProviders && configuredSsoProviders.length > 0 && <Divider sx={{ width: '100%' }}>{t('auth.signIn.divider.or')}</Divider>}
                             {configuredSsoProviders &&
                                 configuredSsoProviders.map(
                                     (ssoProvider) =>
@@ -277,7 +279,7 @@ const SignInPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Microsoft
+                                                {t('auth.signIn.buttons.sso.microsoft')}
                                             </Button>
                                         )
                                 )}
@@ -296,7 +298,7 @@ const SignInPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Google
+                                                {t('auth.signIn.buttons.sso.google')}
                                             </Button>
                                         )
                                 )}
@@ -315,7 +317,7 @@ const SignInPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Auth0 by Okta
+                                                {t('auth.signIn.buttons.sso.auth0')}
                                             </Button>
                                         )
                                 )}
@@ -334,7 +336,7 @@ const SignInPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Github
+                                                {t('auth.signIn.buttons.sso.github')}
                                             </Button>
                                         )
                                 )}

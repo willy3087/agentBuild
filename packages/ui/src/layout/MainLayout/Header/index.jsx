@@ -2,9 +2,10 @@ import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
-import { Button, Avatar, Box, ButtonBase, Switch, Typography, Link } from '@mui/material'
+import { Button, Avatar, Box, ButtonBase, Switch, Typography, Link, Select, MenuItem, FormControl } from '@mui/material'
 import { useTheme, styled, darken } from '@mui/material/styles'
 
 // project imports
@@ -82,6 +83,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 const GitHubStarButton = ({ starCount, isDark }) => {
     const theme = useTheme()
+    const { t } = useTranslation()
 
     const formattedStarCount = starCount.toLocaleString()
 
@@ -117,7 +119,7 @@ const GitHubStarButton = ({ starCount, isDark }) => {
                         ></path>
                     </svg>
                     <Typography variant='caption' sx={{ fontWeight: 600, color: isDark ? 'white' : theme.palette.text.primary }}>
-                        Star
+                        {t('header.github.star')}
                     </Typography>
                 </Box>
                 <Box
@@ -145,6 +147,7 @@ GitHubStarButton.propTypes = {
 const Header = ({ handleLeftDrawerToggle }) => {
     const theme = useTheme()
     const navigate = useNavigate()
+    const { t, i18n } = useTranslation()
 
     const customization = useSelector((state) => state.customization)
     const logoutApi = useApi(accountApi.logout)
@@ -171,7 +174,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
     const signOutClicked = () => {
         logoutApi.request()
         enqueueSnackbar({
-            message: 'Logging out...',
+            message: t('header.logout.loggingOut'),
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
@@ -182,6 +185,12 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 )
             }
         })
+    }
+
+    const handleLanguageChange = (event) => {
+        const newLanguage = event.target.value
+        i18n.changeLanguage(newLanguage)
+        localStorage.setItem('i18nextLng', newLanguage)
     }
 
     useEffect(() => {
@@ -294,7 +303,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                     onClick={() => setIsPricingOpen(true)}
                     startIcon={<IconSparkles size={20} />}
                 >
-                    Upgrade
+                    {t('header.upgrade.button')}
                 </Button>
             )}
             {isPricingOpen && isCloud && (
@@ -309,6 +318,21 @@ const Header = ({ handleLeftDrawerToggle }) => {
                     }}
                 />
             )}
+            <FormControl sx={{ minWidth: 100, mr: 1 }} size='small'>
+                <Select
+                    value={i18n.language || 'en'}
+                    onChange={handleLanguageChange}
+                    sx={{
+                        height: 36,
+                        '& .MuiSelect-select': {
+                            py: 1
+                        }
+                    }}
+                >
+                    <MenuItem value='en'>English</MenuItem>
+                    <MenuItem value='pt-BR'>Português (BR)</MenuItem>
+                </Select>
+            </FormControl>
             <MaterialUISwitch checked={isDark} onChange={changeDarkMode} />
             <Box sx={{ ml: 2 }}></Box>
             <ProfileSection handleLogout={signOutClicked} />

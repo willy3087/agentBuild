@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
 
 // material-ui
@@ -64,39 +65,40 @@ const RegisterCloudUserSchema = z
 
 const RegisterPage = () => {
     const theme = useTheme()
+    const { t } = useTranslation()
     useNotifier()
     const { isEnterpriseLicensed, isCloud, isOpenSource } = useConfig()
 
     const usernameInput = {
-        label: 'Username',
+        label: t('auth.register.fields.username.label'),
         name: 'username',
         type: 'text',
-        placeholder: 'John Doe'
+        placeholder: t('auth.register.fields.username.placeholder')
     }
 
     const passwordInput = {
-        label: 'Password',
+        label: t('auth.register.fields.password.label'),
         name: 'password',
         type: 'password',
-        placeholder: '********'
+        placeholder: t('auth.register.fields.password.placeholder')
     }
 
     const confirmPasswordInput = {
-        label: 'Confirm Password',
+        label: t('auth.register.fields.confirmPassword.label'),
         name: 'confirmPassword',
         type: 'password',
-        placeholder: '********'
+        placeholder: t('auth.register.fields.confirmPassword.placeholder')
     }
 
     const emailInput = {
-        label: 'EMail',
+        label: t('auth.register.fields.email.label'),
         name: 'email',
         type: 'email',
-        placeholder: 'user@company.com'
+        placeholder: t('auth.register.fields.email.placeholder')
     }
 
     const inviteCodeInput = {
-        label: 'Invite Code',
+        label: t('auth.register.fields.inviteCode.label'),
         name: 'inviteCode',
         type: 'text'
     }
@@ -241,9 +243,9 @@ const RegisterPage = () => {
             setUsername('')
             setEmail('')
             if (isEnterpriseLicensed) {
-                setSuccessMsg('Registration Successful. You will be redirected to the sign in page shortly.')
+                setSuccessMsg(t('auth.register.messages.successEnterprise'))
             } else if (isCloud) {
-                setSuccessMsg('To complete your registration, please click on the verification link we sent to your email address')
+                setSuccessMsg(t('auth.register.messages.successCloud'))
             }
             setTimeout(() => {
                 navigate('/signin')
@@ -290,11 +292,11 @@ const RegisterPage = () => {
                         </Alert>
                     )}
                     <Stack sx={{ gap: 1 }}>
-                        <Typography variant='h1'>Sign Up</Typography>
+                        <Typography variant='h1'>{t('auth.register.title')}</Typography>
                         <Typography variant='body2' sx={{ color: theme.palette.grey[600] }}>
-                            Already have an account?{' '}
+                            {t('auth.register.links.haveAccount')}{' '}
                             <Link style={{ color: theme.palette.primary.main }} to='/signin'>
-                                Sign In
+                                {t('auth.register.links.signIn')}
                             </Link>
                             .
                         </Typography>
@@ -304,25 +306,25 @@ const RegisterPage = () => {
                             <Box>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Full Name<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.register.fields.fullName.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
                                 <Input
                                     inputParam={usernameInput}
-                                    placeholder='Display Name'
+                                    placeholder={t('auth.register.fields.fullName.placeholder')}
                                     onChange={(newValue) => setUsername(newValue)}
                                     value={username}
                                     showDialog={false}
                                 />
                                 <Typography variant='caption'>
-                                    <i>Is used for display purposes only.</i>
+                                    <i>{t('auth.register.fields.fullName.hint')}</i>
                                 </Typography>
                             </Box>
                             <Box>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Email<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.register.fields.email.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
@@ -333,50 +335,47 @@ const RegisterPage = () => {
                                     showDialog={false}
                                 />
                                 <Typography variant='caption'>
-                                    <i>Kindly use a valid email address. Will be used as login id.</i>
+                                    <i>{t('auth.register.fields.email.hint')}</i>
                                 </Typography>
                             </Box>
                             {isEnterpriseLicensed && (
                                 <Box>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                                         <Typography>
-                                            Invite Code<span style={{ color: 'red' }}>&nbsp;*</span>
+                                            {t('auth.register.fields.inviteCode.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                         </Typography>
                                         <div style={{ flexGrow: 1 }}></div>
                                     </div>
                                     <OutlinedInput
                                         fullWidth
                                         type='string'
-                                        placeholder='Paste in the invite code.'
+                                        placeholder={t('auth.register.fields.inviteCode.placeholder')}
                                         multiline={false}
                                         inputParam={inviteCodeInput}
                                         onChange={(e) => setToken(e.target.value)}
                                         value={token}
                                     />
                                     <Typography variant='caption'>
-                                        <i>Please copy the token you would have received in your email.</i>
+                                        <i>{t('auth.register.fields.inviteCode.hint')}</i>
                                     </Typography>
                                 </Box>
                             )}
                             <Box>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.register.fields.password.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
                                 <Input inputParam={passwordInput} onChange={(newValue) => setPassword(newValue)} value={password} />
                                 <Typography variant='caption'>
-                                    <i>
-                                        Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase
-                                        letter, one digit, and one special character.
-                                    </i>
+                                    <i>{t('auth.register.fields.password.hint')}</i>
                                 </Typography>
                             </Box>
                             <Box>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Confirm Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth.register.fields.confirmPassword.label')}<span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
@@ -386,13 +385,13 @@ const RegisterPage = () => {
                                     value={confirmPassword}
                                 />
                                 <Typography variant='caption'>
-                                    <i>Confirm your password. Must match the password typed above.</i>
+                                    <i>{t('auth.register.fields.confirmPassword.hint')}</i>
                                 </Typography>
                             </Box>
                             <StyledButton variant='contained' style={{ borderRadius: 12, height: 40, marginRight: 5 }} type='submit'>
-                                Create Account
+                                {t('auth.register.buttons.createAccount')}
                             </StyledButton>
-                            {configuredSsoProviders.length > 0 && <Divider sx={{ width: '100%' }}>OR</Divider>}
+                            {configuredSsoProviders.length > 0 && <Divider sx={{ width: '100%' }}>{t('auth.register.divider.or')}</Divider>}
                             {configuredSsoProviders &&
                                 configuredSsoProviders.map(
                                     (ssoProvider) =>
@@ -409,7 +408,7 @@ const RegisterPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Microsoft
+                                                {t('auth.register.buttons.sso.microsoft')}
                                             </Button>
                                         )
                                 )}
@@ -428,7 +427,7 @@ const RegisterPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Google
+                                                {t('auth.register.buttons.sso.google')}
                                             </Button>
                                         )
                                 )}
@@ -447,7 +446,7 @@ const RegisterPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Auth0 by Okta
+                                                {t('auth.register.buttons.sso.auth0')}
                                             </Button>
                                         )
                                 )}
@@ -466,7 +465,7 @@ const RegisterPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Github
+                                                {t('auth.register.buttons.sso.github')}
                                             </Button>
                                         )
                                 )}
